@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cmath>
 #include <stdint.h>
+#include <string>
 
 #include <ap_axi_sdata.h>
 #include <hls_stream.h>
@@ -37,6 +38,36 @@ static float bits_to_float(uint32_t bits)
     return converter.f;
 }
 
+// Locate a data file next to this source tree.
+// HLS csim runs in <project>/<solution>/csim/build, and add_files may pass
+// either a relative or an absolute source path, so the directory of this
+// source file (__FILE__) is the only reliable reference point. The remaining
+// candidates keep manual g++ builds working from other working directories.
+static std::string data_file_path(const char* fileName)
+{
+    std::string self = __FILE__;
+    std::string::size_type slash = self.find_last_of("/\\");
+    std::string selfDir = (slash == std::string::npos)
+                          ? std::string(".")
+                          : self.substr(0, slash);
+
+    std::string candidates[4] = {
+        selfDir + "/../data/" + fileName,
+        std::string("../data/") + fileName,
+        std::string("../../data/") + fileName,
+        std::string("data/") + fileName
+    };
+
+    for (int i = 0; i < 4; i++) {
+        std::ifstream probe(candidates[i].c_str());
+        if (probe.is_open()) {
+            return candidates[i];
+        }
+    }
+
+    return candidates[0];
+}
+
 int main()
 {
     float x[N_SAMPLES];
@@ -45,12 +76,12 @@ int main()
     hls::stream<axis_t> input_stream;
     hls::stream<axis_t> output_stream;
 
-    std::ifstream inputFile(
-        "D:\\vivado_file\\fir_hls_practice\\solution1\\data\\input_signal.txt"
-    );
+    std::string inputPath = data_file_path("input_signal.txt");
+    std::ifstream inputFile(inputPath.c_str());
 
     if (!inputFile.is_open()) {
         std::cout << "ERROR: Cannot open input_signal.txt\n";
+        std::cout << "  tried: " << inputPath << "\n";
         return 1;
     }
 
@@ -74,12 +105,12 @@ int main()
     }
     inputFile.close();
 
-    std::ifstream outputFile(
-        "D:\\vivado_file\\fir_hls_practice\\solution1\\data\\expected_output.txt"
-    );
+    std::string outputPath = data_file_path("expected_output.txt");
+    std::ifstream outputFile(outputPath.c_str());
 
     if (!outputFile.is_open()) {
         std::cout << "ERROR: Cannot open expected_output.txt\n";
+        std::cout << "  tried: " << outputPath << "\n";
         return 1;
     }
 

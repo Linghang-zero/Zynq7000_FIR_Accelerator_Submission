@@ -29,42 +29,42 @@
 		<link>
 			<name>source</name>
 			<type>2</type>
-			<location>D:/vivado_file/fir_hls/.apc/.src</location>
+			<locationURI>PARENT-1-PROJECT_LOC/src</locationURI>
 		</link>
 		<link>
 			<name>testbench</name>
 			<type>2</type>
-			<location>D:/vivado_file/fir_hls/.apc/.tb</location>
+			<locationURI>PARENT-1-PROJECT_LOC/src</locationURI>
 		</link>
 		<link>
 			<name>solution1/constraints</name>
 			<type>2</type>
-			<location>D:/vivado_file/fir_hls/solution1/.tcls</location>
+			<locationURI>PARENT-1-PROJECT_LOC/script</locationURI>
 		</link>
 		<link>
 			<name>source/fir.cpp</name>
 			<type>1</type>
-			<location>D:/vivado_file/fir_hls/fir.cpp</location>
+			<locationURI>PARENT-1-PROJECT_LOC/src/fir.cpp</locationURI>
 		</link>
 		<link>
 			<name>testbench/fir_test.cpp</name>
 			<type>1</type>
-			<location>D:/vivado_file/fir_hls/fir_test.cpp</location>
+			<locationURI>PARENT-1-PROJECT_LOC/src/fir_test.cpp</locationURI>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>D:/vivado_file/fir_hls/solution1/solution1.directive</location>
+			<locationURI>PARENT-1-PROJECT_LOC/script/solution1.directive</locationURI>
 		</link>
 		<link>
 			<name>solution1/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>D:/vivado_file/fir_hls/solution1/directives.tcl</location>
+			<locationURI>PARENT-1-PROJECT_LOC/script/directives.tcl</locationURI>
 		</link>
 		<link>
 			<name>solution1/constraints/script.tcl</name>
 			<type>1</type>
-			<location>D:/vivado_file/fir_hls/solution1/script.tcl</location>
+			<locationURI>PARENT-1-PROJECT_LOC/script/script.tcl</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

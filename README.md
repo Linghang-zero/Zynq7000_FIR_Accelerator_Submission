@@ -106,12 +106,12 @@ Zynq7000_FIR_Submission/
 
 ## 5. 复现步骤（需在 Xilinx 工具环境中操作）
 
-1. **HLS**：打开 `01_HLS_Accelerator/project`，或直接用 `script/script.tcl` 重建 `solution1`（`csim → csynth → export_design`）。IP 已随包提供，可不重建。**注意**：`fir_test.cpp` 以绝对路径读取原 HLS 工作目录 `solution1\data\` 下的 `input_signal.txt` / `expected_output.txt`（两文件已随包存于 `01_HLS_Accelerator/data/`）；重跑 csim 前需将该目录恢复到原路径，或将 tb 中两处路径常量改为本地路径。
+1. **HLS**：打开 `01_HLS_Accelerator/project`，或直接用 `script/script.tcl` 重建 `solution1`（`csim → csynth → export_design`）。IP 已随包提供，可不重建。**注意**：`fir_test.cpp` 已改为基于 `__FILE__` 定位数据文件——以源码所在目录为基准取 `..\data\`，`01_HLS_Accelerator/` 下 `src/` 与 `data/` 保持同级即可，无需修改任何路径；另备 `../data/`、`../../data/`、`data/` 三个工作目录相对候选，兼容手工 `g++` 编译。若定位失败，报错会打印实际尝试路径。
 2. **Vivado**：打开 `02_Vivado_Hardware/prj/fir_zynq_system.xpr`。IP Repository 已指向包内相对路径 `$PPRDIR/../../01_HLS_Accelerator/ip_export`（即 HLS 导出 IP），`ip_config/` 中另有 8 个 xci、BD 可由 `bd/fir_system_bd.tcl` 脚本重建。Bitstream 已提供（`output/`），无需重跑实现。
 3. **SDK**：新建 workspace，依次导入 `03_SDK_Software/` 下的 `fir_system_wrapper_hw_platform_0` → `fir_test_bsp` → `fir_test`（三者 `.project` 工程名与原工作区一致，相对引用 `../src/lscript.ld`、`../../fir_test_bsp/...` 已闭合）；按 `fir_test_bsp/system.mss` 生成 BSP 后编译 `fir_test` 下载。
 4. **上板**：JTAG 下载 ELF，运行约 5 秒后 Suspend，在 Expressions 中观察 `test_status`（应为 4）、`hw_*_us`、`sw_*_us`（参考 `04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png`）。
 
-> ⚠️ **重要限制**：本目录是**源码与成果归档副本**。SDK 三个工程的 `.project` 名称与相对引用已恢复为与原 `sdk_workspace` 同构、Vivado IP repo 已改为包内相对路径，但 HLS `.project/.cproject` 与 `fir_test.cpp` 内部仍保留原始工程的绝对路径（本机路径）。**本副本未做过"独立于原工程的重新构建验证"**，因此不宣称可一键复现；如需可独立打开的工程，需在副本内重新创建工程并重指源文件（见 `05_Docs/PENDING_ITEMS.md`）。
+> ⚠️ **重要限制**：本目录是**源码与成果归档副本**。SDK 三个工程的 `.project` 名称与相对引用已恢复为与原 `sdk_workspace` 同构、Vivado IP repo 已改为包内相对路径；HLS `.project` 的 `linkedResources`、`.cproject` 的 include 路径、`.launch` 的工作目录已改为 `PARENT-1-PROJECT_LOC` / `${ProjDirPath}` / `${project_loc}` 变量，`fir_test.cpp` 亦已无绝对路径。**但本副本未做过"独立于原工程的重新构建验证"**，因此仍不宣称可一键复现；如需可独立打开的工程，建议在副本内重新创建工程并重指源文件（见 `05_Docs/PENDING_ITEMS.md`）。
 
 ## 6. 文档索引
 

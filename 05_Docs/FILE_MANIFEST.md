@@ -26,11 +26,13 @@
 
 | 文件 | 大小 | 来源 | 用途 |
 |---|---|---|---|
-| `.project` | 2,093 B | `HLS\.project` | Eclipse 风格工程描述 |
-| `.cproject` | 34,062 B | `HLS\.cproject` | 编译配置（include 路径、宏、优化） |
+| `.project` | 2,104 B | `HLS\.project` | Eclipse 工程描述；`linkedResources` 由本机绝对路径改为 `PARENT-1-PROJECT_LOC/…` 变量 |
+| `.cproject` | 34,080 B | `HLS\.cproject` | 编译配置（include 路径、宏、优化）；本机 include 路径改为 `${ProjDirPath}/..` |
 | `.settings\language.settings.xml` | 2,649 B | `HLS\.settings\` | 语言/索引设置 |
-| `.settings\fir_hls.Debug.launch` / `.Release.launch` | 2,016 / 2,020 B | 同上 | 运行配置 |
-| `vivado_hls.app` | 585 B | `HLS\vivado_hls.app` | HLS 工程入口描述（GUI 打开用） |
+| `.settings\fir_hls.Debug.launch` / `.Release.launch` | 2,008 / 2,012 B | 同上 | 运行配置；工作目录改为 `${project_loc}` |
+| `vivado_hls.app` | 582 B | `HLS\vivado_hls.app` | HLS 工程入口描述（GUI 打开用）；文件条目为 `src/…` 相对路径 |
+
+> 上述 5 个文件除本节标注的路径变量化外未做其他改动；`D:/Xilinx/Vivado/2019.1/…` 为工具链安装路径，由 HLS 自行维护，保留原样。
 
 ### script — 构建脚本（**关键，可重建 solution1**）
 
@@ -189,10 +191,10 @@
 
 | 文件 | 大小 | 来源 | 用途 |
 |---|---|---|---|
-| `data\input_signal.txt` | 12,498 B | `HLS\..\fir_hls_practice\solution1\data\`（MD5 一致复制） | C 仿真输入激励（`fir_test.cpp` 绝对路径所读文件） |
+| `data\input_signal.txt` | 12,498 B | `HLS\..\fir_hls_practice\solution1\data\`（MD5 一致复制） | C 仿真输入激励；testbench 以 `__FILE__` 定位 `..\data\` 读取 |
 | `data\expected_output.txt` | 12,476 B | 同上 | C 仿真理论输出（testbench 参考值） |
 
-> `fir_test.cpp` 本体未改动（遵守"不修改原始源码"）；复现 csim 的路径处理见 README §5。
+> `fir_test.cpp` 已于 2026-11-03 完成路径整改：两处硬编码绝对路径（原指向 HLS 工作目录 `solution1\data\`）替换为 `data_file_path()`（以 `__FILE__` 所在目录为基准取 `..\data\`，另备 3 个相对候选回退），FIR 算法、51 抽头系数与上述两文件数据均未改动（两文件 MD5 `de87e1c9…` / `bc977335…` 未变）。复现 csim 的路径处理见 README §5。
 
 ---
 
@@ -204,6 +206,8 @@
 | `02\prj\fir_zynq_system.xpr` | IPRepoPath 由 `$PPRDIR/../fir_hls/solution1/impl/ip`（包外）改为 `$PPRDIR/../../01_HLS_Accelerator/ip_export`（包内相对路径） |
 | `04\logs\性能测试原始日志_恢复_20261024.txt` | 文末追加【五】勘误注记（原始【一】~【四】读取记录未改动一字） |
 | 性能数据定版 | 采用报告图12截图对应运行的完整数据（hw 96.2880/95.5110 µs，sw 2469.3239/2468.7209 µs，对照比 25.65/25.85），README/VERSION_NOTES 已同步 |
+| `01\src\fir_test.cpp` 去绝对路径 | 两处硬编码绝对路径（原 `fir_hls_practice\solution1\data\…`）改为 `data_file_path()`（以 `__FILE__` 定位 `..\data\`，另 3 个相对候选回退）；FIR 算法、系数、输入/预期数据、比对逻辑均未改 |
+| HLS 工程配置路径变量化 | `.project` 8 条 `linkedResources` → `PARENT-1-PROJECT_LOC/{src,script}/…`（8 个目标均落在包内，已逐条校验存在）；`.cproject` 6 处本机 include 路径 → `${ProjDirPath}/..`；2 个 `.launch` 工作目录 → `${project_loc}`；`vivado_hls.app` 文件条目 → `src/fir.cpp`、`src/fir_test.cpp` |
 
 ---
 
@@ -247,7 +251,7 @@
 | 项 | 数值 |
 |---|---|
 | 公开文件总数 | **142 个**（01_HLS 61 / 02_Vivado 21 / 03_SDK 28 / 04_Evidence 23 / 05_Docs 5 / 顶层 4） |
-| 公开总体量 | **13,787,623 字节 ≈ 13.15 MiB** |
+| 公开总体量 | **13,791,211 字节 ≈ 13.15 MiB**（2026-11-03 路径整改后重新实测） |
 | 未纳入公开（保留本机） | `_PENDING/`（11 文件）、`05_Docs/FINAL_AUDIT_REPORT.md`、`PUBLIC_RELEASE_AUDIT.md`、`PUBLIC_RELEASE_FINAL_REPORT.md` |
 | 顶层文件 | `README.md`、`QUALITY_CHECK_REPORT.md`、`.gitattributes`、`.gitignore` |
 

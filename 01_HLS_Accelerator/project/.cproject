@@ -55,7 +55,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/include/ap_sysc"/>
                                     									
-                                    <listOptionValue builtIn="false" value="D:/vivado_file"/>
+                                    <listOptionValue builtIn="false" value="${ProjDirPath}/.."/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/win64/tools/auto_cc/include"/>
                                     									
@@ -91,7 +91,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/include/ap_sysc"/>
                                     									
-                                    <listOptionValue builtIn="false" value="D:/vivado_file"/>
+                                    <listOptionValue builtIn="false" value="${ProjDirPath}/.."/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/win64/tools/auto_cc/include"/>
                                     									
@@ -173,7 +173,7 @@
                                 								
                                 <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/include/ap_sysc"/>
                                 								
-                                <listOptionValue builtIn="false" value="D:/vivado_file"/>
+                                <listOptionValue builtIn="false" value="${ProjDirPath}/.."/>
                                 								
                                 <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/win64/tools/auto_cc/include"/>
                                 								
@@ -257,7 +257,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/include/ap_sysc"/>
                                     									
-                                    <listOptionValue builtIn="false" value="D:/vivado_file"/>
+                                    <listOptionValue builtIn="false" value="${ProjDirPath}/.."/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/win64/tools/auto_cc/include"/>
                                     									
@@ -283,7 +283,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/include/ap_sysc"/>
                                     									
-                                    <listOptionValue builtIn="false" value="D:/vivado_file"/>
+                                    <listOptionValue builtIn="false" value="${ProjDirPath}/.."/>
                                     									
                                     <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/win64/tools/auto_cc/include"/>
                                     									
@@ -355,7 +355,7 @@
                                 								
                                 <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/include/ap_sysc"/>
                                 								
-                                <listOptionValue builtIn="false" value="D:/vivado_file"/>
+                                <listOptionValue builtIn="false" value="${ProjDirPath}/.."/>
                                 								
                                 <listOptionValue builtIn="false" value="D:/Xilinx/Vivado/2019.1/win64/tools/auto_cc/include"/>
                                 								
