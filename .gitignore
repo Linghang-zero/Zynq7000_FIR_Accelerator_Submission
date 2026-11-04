@@ -12,6 +12,8 @@ PUBLIC_RELEASE_AUDIT.md
 PUBLIC_RELEASE_FINAL_REPORT.md
 VIVADO_AUDIT.md
 GITHUB_PATH_FINAL_AUDIT.md
+STRUCTURE_AUDIT.md
+FINAL_SUBMISSION_AUDIT.md
 
 # ---------------------------------------------------------------------------
 # 工具与临时产物
@@ -30,3 +32,13 @@ __pycache__/
 Thumbs.db
 .DS_Store
 desktop.ini
+
+# 最终提交只公开唯一报告；原备份保留本机
+report/backups/
+report/~$*
+report/*修改记录.md
+report/AI协作与Skill专项修订记录.md
+report/FIR技术报告_最终提交版.*
+*.rar
+~$*
+.qa/

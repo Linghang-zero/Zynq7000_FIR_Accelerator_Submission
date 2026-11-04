@@ -1,0 +1,68 @@
+{
+  "scope": "offline only; approximate quantized reference, not bit-accurate ap_fixed simulation",
+  "endianness": "little; BIN has no self-describing byte order",
+  "model_sha256": "d7201b12067135a0fa1ab86b69218ca05e1604ecd960f903f6062727764efc31",
+  "cases": [
+    {
+      "case": "sine",
+      "file": "fir_sine_fpga_1000.bin",
+      "samples": 1000,
+      "bytes": 4000,
+      "sha256": "5633ae6731df66aad33158cb3a7120b1af974e03a1abc4ba7f1377e88cfac3ce",
+      "max_abs_error": 2.1941959857940674e-06,
+      "rmse": 1.3176856394272021e-06,
+      "points_gt_0.001": 0,
+      "dump_equal": true,
+      "result": "PASS"
+    },
+    {
+      "case": "mixed",
+      "file": "fir_mixed_fpga_1000.bin",
+      "samples": 1000,
+      "bytes": 4000,
+      "sha256": "5871970f501ec7a0dd413b2e699527f104a7c34b00f417ce763006c6c9dc2fa5",
+      "max_abs_error": 2.9802322387695312e-06,
+      "rmse": 1.7019388333809458e-06,
+      "points_gt_0.001": 0,
+      "dump_equal": true,
+      "result": "PASS"
+    },
+    {
+      "case": "sine",
+      "file": "fir_sine_fpga_perf_1000.bin",
+      "samples": 1000,
+      "bytes": 4000,
+      "sha256": "5633ae6731df66aad33158cb3a7120b1af974e03a1abc4ba7f1377e88cfac3ce",
+      "max_abs_error": 2.1941959857940674e-06,
+      "rmse": 1.3176856394272021e-06,
+      "points_gt_0.001": 0,
+      "dump_equal": null,
+      "result": "PASS"
+    },
+    {
+      "case": "mixed",
+      "file": "fir_mixed_fpga_perf_1000.bin",
+      "samples": 1000,
+      "bytes": 4000,
+      "sha256": "5871970f501ec7a0dd413b2e699527f104a7c34b00f417ce763006c6c9dc2fa5",
+      "max_abs_error": 2.9802322387695312e-06,
+      "rmse": 1.7019388333809458e-06,
+      "points_gt_0.001": 0,
+      "dump_equal": true,
+      "result": "PASS"
+    },
+    {
+      "case": "impulse",
+      "file": "fir_impulse_fpga_1000.bin",
+      "samples": 1000,
+      "bytes": 4000,
+      "sha256": "63da0dcf1b990a2fb2d45817ab3099b430fb4486545f9bde5862c5ee0498c933",
+      "max_abs_error": 2.384185791015625e-07,
+      "rmse": 3.45501345305191e-08,
+      "points_gt_0.001": 0,
+      "dump_equal": null,
+      "result": "PASS"
+    }
+  ],
+  "result": "PASS"
+}

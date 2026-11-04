@@ -1,0 +1,25 @@
+﻿stage,test_case,metric,value,unit,conditions,source
+board_test,sine,arm_compute_time,2469.3239,us,1000 samples; Cortex-A9 -O0; FIR computation only,04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png
+board_test,sine,fpga_dma_end_to_end_time,96.2880,us,1000 samples; preparation/cache/DMA/FIR/wait,04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png
+board_test,sine,performance_ratio,25.65,ratio,approximate; ARM compute / FPGA end-to-end; not strict speedup,04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png
+board_test,sine,max_abs_error,2.194196e-6,absolute,compare.py quantized reference; not bit-accurate HLS model,05_Docs/compare.py
+board_test,sine,error_points_gt_0.001,0,points,1000 points; same reference,05_Docs/compare.py
+board_test,mixed,arm_compute_time,2468.7209,us,1000 samples; Cortex-A9 -O0; FIR computation only,04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png
+board_test,mixed,fpga_dma_end_to_end_time,95.5110,us,1000 samples; preparation/cache/DMA/FIR/wait,04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png
+board_test,mixed,performance_ratio,25.85,ratio,approximate; ARM compute / FPGA end-to-end; not strict speedup,04_Test_Evidence/screenshots/性能测试_SDK_Expressions_20261024.png
+board_test,mixed,max_abs_error,2.980232e-6,absolute,compare.py quantized reference; not bit-accurate HLS model,05_Docs/compare.py
+board_test,mixed,error_points_gt_0.001,0,points,1000 points; same reference,05_Docs/compare.py
+system_fully_placed,system,slice_luts,7084,count,DMA owns 2 BRAM; FIR owns 25 DSP,02_Vivado_Hardware/report/fir_system_wrapper_utilization_placed.rpt
+system_fully_placed,system,slice_registers,8010,count,DMA owns 2 BRAM; FIR owns 25 DSP,02_Vivado_Hardware/report/fir_system_wrapper_utilization_placed.rpt
+system_fully_placed,system,block_ram,2,tiles,DMA owns 2 BRAM; FIR owns 25 DSP,02_Vivado_Hardware/report/fir_system_wrapper_utilization_placed.rpt
+system_fully_placed,system,dsp48e1,25,count,DMA owns 2 BRAM; FIR owns 25 DSP,02_Vivado_Hardware/report/fir_system_wrapper_utilization_placed.rpt
+fir_ip_ooc,fir,luts,3053,count,original OOC report external to submission; audit evidence E11,06_Skill/references/hardware_evidence.md
+fir_ip_ooc,fir,dsp,25,count,original OOC report external to submission; audit evidence E11,06_Skill/references/hardware_evidence.md
+fir_ip_ooc,fir,bram,0,count,original OOC report external to submission; audit evidence E11,06_Skill/references/hardware_evidence.md
+routed_timing,system,WNS,8.855,ns,20 ns constraint; hold margin small,02_Vivado_Hardware/report/fir_system_wrapper_timing_summary_routed.rpt
+routed_timing,system,WHS,0.036,ns,20 ns constraint; hold margin small,02_Vivado_Hardware/report/fir_system_wrapper_timing_summary_routed.rpt
+routed_timing,system,TNS,0,ns,20 ns constraint; hold margin small,02_Vivado_Hardware/report/fir_system_wrapper_timing_summary_routed.rpt
+routed_timing,system,THS,0,ns,20 ns constraint; hold margin small,02_Vivado_Hardware/report/fir_system_wrapper_timing_summary_routed.rpt
+configuration,system,pl_clock,50,MHz,configured; not independently measured on board,02_Vivado_Hardware/report/fir_system_wrapper_timing_summary_routed.rpt
+hls_target,fir,target_clock_period,10,ns,100 MHz synthesis target,01_HLS_Accelerator/report/fir_csynth.rpt
+hls_synthesis,fir,sample_loop_II,1,cycles,achieved; not end-to-end throughput,01_HLS_Accelerator/report/fir_csynth.rpt

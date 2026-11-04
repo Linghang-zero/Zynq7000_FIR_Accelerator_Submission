@@ -1,0 +1,13 @@
+test_archived_five_cases (__main__.VerifyTests.test_archived_five_cases) ... ok
+test_cli_exit_and_exclusive_output (__main__.VerifyTests.test_cli_exit_and_exclusive_output) ... ok
+test_coefficient_and_type_guard (__main__.VerifyTests.test_coefficient_and_type_guard) ... ok
+test_input_length_and_amplitude (__main__.VerifyTests.test_input_length_and_amplitude) ... ok
+test_missing_file (__main__.VerifyTests.test_missing_file) ... ok
+test_original_reference_main (__main__.VerifyTests.test_original_reference_main) ... ok
+test_reject_corrupt_inputs (__main__.VerifyTests.test_reject_corrupt_inputs) ... ok
+test_reject_mismatch_and_byte_swap (__main__.VerifyTests.test_reject_mismatch_and_byte_swap) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.445s
+
+OK
