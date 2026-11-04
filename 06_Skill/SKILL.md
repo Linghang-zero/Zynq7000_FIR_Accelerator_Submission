@@ -38,3 +38,7 @@ python -B 06_Skill/scripts/test_verify.py
 验收记录见 [TEST_RESULTS.md](TEST_RESULTS.md)；原compare.py及输入来源见 [provenance.json](references/provenance.json)。该参考采用近似定点量化、float64累加、float32输出，不是位精确ap_fixed仿真。新输入限制abs(x)<4仅为保守范围，不证明任意输入或所有溢出情形正确。BIN没有字节序元信息；反字节序负例可被拒绝，但不能据此声称能可靠识别所有字节序错误。
 
 系数或位宽变更、不同初态/样本数、工具/IP版本不匹配、旧ELF调试地址、工程依赖缺失使原验收前提失效。输入头变化须人工确认与BIN同批。HLS II、Vivado移植、SDK完整重建仍按 [复现与证据边界](references/reproduction.md) 人工执行；没有自动综合、实现、下载、测频或故障恢复功能。
+
+## 协作来源和提炼记录
+
+见[AI_Interaction_Log.md](AI_Interaction_Log.md)中五个案例的七项结构和真实性分级。只有离线校验是已实际运行的自动化能力；DMA/HLS核查与移植准备分别受人工操作和静态检查边界限制。逐项输入/输出、操作及证据汇总见[README](README.md)。不能把历史实现反推为AI建议，也不能把本包当作已验证的通用PYNQ技能。

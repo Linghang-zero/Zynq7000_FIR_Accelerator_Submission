@@ -17,6 +17,7 @@ DDR → SmartConnect/PS HP0 → DMA MM2S → FIR AXI4-Stream → DMA S2MM → Sm
 |[host](host/README.md)|索引03_SDK_Software、04_Test_Evidence/python_verify及05_Docs/compare.py|
 |[metrics](metrics/README.md)|指标CSV及原始证据索引|
 |[06_Skill](06_Skill/README.md)|可交付离线验证Skill：5组BIN/3个dump与8项回归；硬件步骤仍需人工|
+|[AI交互记录](06_Skill/AI_Interaction_Log.md)|五个真实案例，按七项结构整理；原话选段与事后摘要、验证证据及缺口分别标明|
 |[skill](skill/README.md)|历史工程经验清单，保留其原验证边界|
 |[report](report/README.md)|正式设计报告定版 DOCX/PDF、版本与改动范围|
 

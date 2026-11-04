@@ -10,3 +10,9 @@
 |Python Golden|字节序、零初态、定点参考口径影响误差|按小端float32解析1000点；零填充因果FIR；固定输入/系数；区分浮点与量化模型|compare.py对4组BIN复算及dump逐字一致|compare.py非位精确ap_fixed仿真；不自动修复Notebook缺依赖|
 
 依据：[HLS源码](../01_HLS_Accelerator/src/fir.cpp)、[SDK应用](../03_SDK_Software/fir_test/src/main.c)、[HLS报告](../01_HLS_Accelerator/report/fir_csynth.rpt)、[复算脚本](../05_Docs/compare.py)。未虚构AI辅助设计记录、自动优化搜索或优化前后收益。
+
+## 竞赛技能包入口
+
+本页上表保留为历史经验记录。实际可执行的技能包位于[06_Skill](../06_Skill/README.md)，使用说明见[SKILL.md](../06_Skill/SKILL.md)，运行证据见[TEST_RESULTS.md](../06_Skill/TEST_RESULTS.md)，协作过程及缺口见[AI_Interaction_Log.md](../06_Skill/AI_Interaction_Log.md)。这些说明不把上表中的人工排查和移植准备升级为已完成自动化。
+
+本轮仅用相对链接提供官方要求的skill/入口，不复制或移动工程和脚本；若必须将全部技能实体放在skill/下，当前索引布局是否被接受仍需赛事确认。
